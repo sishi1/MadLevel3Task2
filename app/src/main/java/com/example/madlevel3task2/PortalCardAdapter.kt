@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.card_portal.view.*
+import com.example.madlevel3task2.databinding.CardPortalBinding
 
 
 class PortalCardAdapter (val portalCards: List<PortalCard>, val clickListener:(PortalCard) -> Unit) :
@@ -12,10 +12,12 @@ class PortalCardAdapter (val portalCards: List<PortalCard>, val clickListener:(P
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private val binding = CardPortalBinding.bind(itemView)
+
         fun databind(portalCard: PortalCard, clickListener: (PortalCard) -> Unit) {
-            itemView.tvTitle.text = portalCard.title
-            itemView.tvLink.text = portalCard.url
-            itemView.cardView.setOnClickListener { clickListener(portalCard) }
+            binding.tvTitle.text = portalCard.title
+            binding.tvLink.text = portalCard.url
+            binding.cardView.setOnClickListener { clickListener(portalCard) }
         }
     }
 
