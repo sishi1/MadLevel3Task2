@@ -1,5 +1,6 @@
 package com.example.madlevel3task2
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel3task2.databinding.FragmentOverviewBinding
+import androidx.browser.customtabs.CustomTabsIntent
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -48,7 +50,11 @@ class OverviewFragment : Fragment() {
     }
 
     private fun portalCardClicked(portalCard: PortalCard) {
+        val url = portalCard.url
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
 
+        customTabsIntent.launchUrl(this.requireContext(), Uri.parse(url))
     }
 
 }
